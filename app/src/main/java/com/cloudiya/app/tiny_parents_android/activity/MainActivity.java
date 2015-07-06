@@ -17,32 +17,31 @@ import it.neokree.materialnavigationdrawer.elements.MaterialAccount;
 import it.neokree.materialnavigationdrawer.elements.listeners.MaterialAccountListener;
 
 /**
- * Purpose: Setting
+ * Purpose: Main screen
  */
 
-public class MainActivity extends MaterialNavigationDrawer<Fragment> implements MaterialAccountListener {
+public class MainActivity extends MaterialNavigationDrawer<Fragment>
+    implements MaterialAccountListener {
 
+  @Override public void init(Bundle bundle) {
 
-    @Override
-    public void init(Bundle bundle) {
+    MaterialAccount account =
+        new MaterialAccount(this.getResources(), "Chang Li", "Tel: 13971125425", R.drawable.avatar,
+            R.drawable.bamboo);
+    this.addAccount(account);
 
-        MaterialAccount account = new MaterialAccount(this.getResources(),"Chang Li", "Tel: 13971125425", R.drawable.avatar, R.drawable.bamboo);
-        this.addAccount(account);
+    // set listener
+    this.setAccountListener(this);
 
-        // set listener
-        this.setAccountListener(this);
+    // create sections
+    this.addSection(newSection("Setting", new SettingFragment()));
+  }
 
-        // create sections
-        this.addSection(newSection("Setting", new SettingFragment()));
-    }
+  @Override public void onAccountOpening(MaterialAccount account) {
 
-    @Override
-    public void onAccountOpening(MaterialAccount account) {
+  }
 
-    }
+  @Override public void onChangeAccount(MaterialAccount newAccount) {
 
-    @Override
-    public void onChangeAccount(MaterialAccount newAccount) {
-
-    }
+  }
 }
