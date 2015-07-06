@@ -22,11 +22,13 @@ git commit to generate the App change log.
 Each commit message consists of a header, a body and a footer. The header has a special format
 that includes a type, a scope and a subject:
 
+```
 <type>(<scope>): <subject>
 <BLANK LINE>
 <body>
 <BLANK LINE>
 <footer>
+```
 
 Any line of the commit message cannot be longer 100 characters! This allows the message to be
 easier to read on Github as well as in various git tools.
