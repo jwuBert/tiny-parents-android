@@ -6,12 +6,11 @@ package com.cloudiya.app.tiny_parents_android.activity;
  * Created by mm on 7/6/15.
  */
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-
 import com.cloudiya.app.tiny_parents_android.R;
 import com.cloudiya.app.tiny_parents_android.fragment.SettingFragment;
-
 import it.neokree.materialnavigationdrawer.MaterialNavigationDrawer;
 import it.neokree.materialnavigationdrawer.elements.MaterialAccount;
 import it.neokree.materialnavigationdrawer.elements.listeners.MaterialAccountListener;
@@ -25,8 +24,11 @@ public class MainActivity extends MaterialNavigationDrawer<Fragment>
 
   @Override public void init(Bundle bundle) {
 
+    String nickname = getString(R.string.default_nickname);
+    String phoneString = "Tel: " + getString(R.string.default_phone_number);
+
     MaterialAccount account =
-        new MaterialAccount(this.getResources(), "Chang Li", "Tel: 13971125425", R.drawable.avatar,
+        new MaterialAccount(this.getResources(), nickname, phoneString, R.drawable.avatar,
             R.drawable.bamboo);
     this.addAccount(account);
 
@@ -35,6 +37,8 @@ public class MainActivity extends MaterialNavigationDrawer<Fragment>
 
     // create sections
     this.addSection(newSection("Setting", new SettingFragment()));
+    this.addSection(newSection("Login", new Intent(this, LoginActivity.class)));
+
   }
 
   @Override public void onAccountOpening(MaterialAccount account) {
