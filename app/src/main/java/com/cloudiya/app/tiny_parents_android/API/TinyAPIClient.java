@@ -11,7 +11,22 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 /**
- * Purpose:
+ * Purpose: Static API client
+ *
+ * Usage:(make user login request)
+ *
+ * </pre>
+ *    RequestParams params = new RequestParams();
+ *    params.put("uname", username);
+ *    params.put("passwd", password);
+ *    params.put("role", role);
+ *    TinyAPIClient.userLogin(params, new JsonHttpResponseHandler() {
+ *      &#064;Override public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+ *        super.onSuccess(statusCode, headers, response);
+ *        Log.d(TAG, response.toString());
+ *      }
+ *    });
+ * </pre>
  */
 
 public class TinyAPIClient {
