@@ -2,7 +2,9 @@
   <dictionary name="mm">
     <words>
       <w>github</w>
+      <w>passwd</w>
       <w>perf</w>
+      <w>uname</w>
     </words>
   </dictionary>
 </component>
