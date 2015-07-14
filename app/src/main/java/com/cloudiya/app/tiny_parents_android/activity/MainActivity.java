@@ -6,46 +6,38 @@ package com.cloudiya.app.tiny_parents_android.activity;
  * Created by mm on 7/6/15.
  */
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import com.cloudiya.app.tiny_parents_android.R;
-import com.cloudiya.app.tiny_parents_android.fragment.SettingFragment;
-import it.neokree.materialnavigationdrawer.MaterialNavigationDrawer;
-import it.neokree.materialnavigationdrawer.elements.MaterialAccount;
-import it.neokree.materialnavigationdrawer.elements.listeners.MaterialAccountListener;
 
 /**
- * Purpose: Main screen
+ * Purpose: MainActivity, use to check app status.
  */
 
-public class MainActivity extends MaterialNavigationDrawer<Fragment>
-    implements MaterialAccountListener {
+public class MainActivity extends Activity{
 
-  @Override public void init(Bundle bundle) {
+  @Override protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
 
-    String nickname = getString(R.string.default_nickname);
-    String phoneString = "Tel: " + getString(R.string.default_phone_number);
+    // Initial Realm storage
 
-    MaterialAccount account =
-        new MaterialAccount(this.getResources(), nickname, phoneString, R.drawable.avatar,
-            R.drawable.bamboo);
-    this.addAccount(account);
+    // Check whether user already login in or not
+    SharedPreferences sharedPref = this.getSharedPreferences(
+        getString(R.string.preference_file_key), Context.MODE_PRIVATE);
 
-    // set listener
-    this.setAccountListener(this);
-
-    // create sections
-    this.addSection(newSection("Setting", new SettingFragment()));
-    this.addSection(newSection("Login", new Intent(this, LoginActivity.class)));
-
-  }
-
-  @Override public void onAccountOpening(MaterialAccount account) {
-
-  }
-
-  @Override public void onChangeAccount(MaterialAccount newAccount) {
+    int isAlreadyLogin = sharedPref.getInt(getString(R.string.is_already_login), 0);
+    if (isAlreadyLogin > 0) {
+      // Show home activity
+      Intent homeIntent = new Intent(this, HomeActivity.class);
+      startActivity(homeIntent);
+    } else {
+      // Show login activity
+      Intent loginIntent = new Intent(this, LoginActivity.class);
+      startActivity(loginIntent);
+    }
 
   }
 }
