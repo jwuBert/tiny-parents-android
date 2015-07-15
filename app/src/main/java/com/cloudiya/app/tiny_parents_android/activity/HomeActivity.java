@@ -2,6 +2,8 @@
  * Copyright (c) 2011-2015 Wuhan Cloudiya Tech. Co. Ltd
  * This file is part of Little's Childhood （微童年） Software & APP
  * Created by mm on 7/13/15.
+ *
+ * Purpose: Home screen
  */
 
 /**
@@ -14,7 +16,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import com.cloudiya.app.tiny_parents_android.R;
-import com.cloudiya.app.tiny_parents_android.fragment.SettingFragment;
+import com.cloudiya.app.tiny_parents_android.fragment.HomeFragment;
 import it.neokree.materialnavigationdrawer.MaterialNavigationDrawer;
 import it.neokree.materialnavigationdrawer.elements.MaterialAccount;
 import it.neokree.materialnavigationdrawer.elements.listeners.MaterialAccountListener;
@@ -36,9 +38,8 @@ public class HomeActivity extends MaterialNavigationDrawer<Fragment>
     this.setAccountListener(this);
 
     // create sections
-    this.addSection(newSection("Setting", new SettingFragment()));
+    this.addSection(newSection("Home", new HomeFragment()));
     this.addSection(newSection("Login", new Intent(this, LoginActivity.class)));
-
   }
 
   @Override public void onAccountOpening(MaterialAccount account) {
