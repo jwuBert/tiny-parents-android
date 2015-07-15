@@ -67,18 +67,22 @@ public class LoginActivity extends Activity {
             // Prevent back to LoginActivity
             finish();
 
-            // Save app state to sharedPreference
+            // Save app state to SharedPreference
             SharedPreferences sharedPref = LoginActivity.this.getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putInt(getString(R.string.is_already_login), 1);
 
-            // Save security token to sharedPreferences temporarily.
-            // Because the KeyStore is useless in a rooted device.
-            // Maybe later find some security storage to store token alike security information.
-            // TODO: Change a more security strategy to store token, keys .etc. (Important not Emergent)
             try {
-              editor.putString("APIToken", response.getString("token"));
+              // Save security token to sharedPreferences temporarily.
+              // Because the KeyStore is useless in a rooted device.
+              // Maybe later find some security storage to store token alike security information.
+              // TODO: Change a more security strategy to store token, keys .etc. (Important not Emergent)
+              editor.putString(getString(R.string.API_token), response.getString("token"));
+
+              // Save current login parent to SharedPreference
+              editor.putString(getString(R.string.current_parent_ID), response.getString("uid"));
+
             } catch (JSONException e) {
               e.printStackTrace();
             }

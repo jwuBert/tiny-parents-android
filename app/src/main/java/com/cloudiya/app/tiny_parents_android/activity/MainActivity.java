@@ -12,6 +12,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import com.cloudiya.app.tiny_parents_android.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 /**
  * Purpose: MainActivity, use to check app status.
@@ -23,6 +25,10 @@ public class MainActivity extends Activity{
     super.onCreate(savedInstanceState);
 
     // Initial Realm storage
+
+    // Create global configuration and initialize ImageLoader with this config
+    ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
+    ImageLoader.getInstance().init(config);
 
     // Check whether user already login in or not
     SharedPreferences sharedPref = this.getSharedPreferences(
