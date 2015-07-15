@@ -64,6 +64,9 @@ public class LoginActivity extends Activity {
             Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
             startActivity(homeIntent);
 
+            // Prevent back to LoginActivity
+            finish();
+
             // Save app state to sharedPreference
             SharedPreferences sharedPref = LoginActivity.this.getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);

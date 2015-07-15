@@ -33,10 +33,16 @@ public class MainActivity extends Activity{
       // Show home activity
       Intent homeIntent = new Intent(this, HomeActivity.class);
       startActivity(homeIntent);
+
+      // Prevent back to MainActivity
+      finish();
     } else {
       // Show login activity
       Intent loginIntent = new Intent(this, LoginActivity.class);
       startActivity(loginIntent);
+
+      // Prevent back to MainActivity
+      finish();
     }
 
   }
