@@ -8,6 +8,8 @@
  * Purpose: Home screen
  *
  * Purpose: Home screen
+ *
+ * Purpose: Home screen
  */
 
 /**
@@ -51,7 +53,7 @@ public class HomeActivity extends MaterialNavigationDrawer<Fragment>
     Parent currentParent;
     if (currentParentResult.size() > 1) {
       Log.e(TAG, "found multiple login user records");
-      return;
+      currentParent = currentParentResult.first();
     } else if (currentParentResult.size() == 0) {
       Log.e(TAG, "found zero login user records");
       return;
