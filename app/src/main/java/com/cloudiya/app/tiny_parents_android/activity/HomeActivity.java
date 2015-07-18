@@ -10,6 +10,8 @@
  * Purpose: Home screen
  *
  * Purpose: Home screen
+ *
+ * Purpose: Home screen
  */
 
 /**
@@ -18,76 +20,111 @@
 
 package com.cloudiya.app.tiny_parents_android.activity;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
-import android.util.Log;
-import android.view.View;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import com.cloudiya.app.tiny_parents_android.R;
 import com.cloudiya.app.tiny_parents_android.fragment.HomeFragment;
-import com.cloudiya.app.tiny_parents_android.model.Parent;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
-import io.realm.Realm;
-import io.realm.RealmResults;
-import it.neokree.materialnavigationdrawer.MaterialNavigationDrawer;
-import it.neokree.materialnavigationdrawer.elements.MaterialAccount;
-import it.neokree.materialnavigationdrawer.elements.listeners.MaterialAccountListener;
 
-public class HomeActivity extends MaterialNavigationDrawer<Fragment>
-    implements MaterialAccountListener {
+public class HomeActivity extends AppCompatActivity {
 
-  private static final String TAG = LoginActivity.class.getSimpleName();
+  private DrawerLayout dlDrawer;
 
-  @Override public void init(Bundle bundle) {
+  @Override protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
 
-    SharedPreferences sharedPref =
-        getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-    String currentParentID = sharedPref.getString(getString(R.string.current_parent_ID), null);
+    setContentView(R.layout.activity_home);
 
-    Realm realm = Realm.getInstance(getApplicationContext());
-    RealmResults<Parent> currentParentResult =
-        realm.where(Parent.class).equalTo("userID", currentParentID).findAll();
-    Parent currentParent;
-    if (currentParentResult.size() > 1) {
-      Log.e(TAG, "found multiple login user records");
-      currentParent = currentParentResult.first();
-    } else if (currentParentResult.size() == 0) {
-      Log.e(TAG, "found zero login user records");
-      return;
-    } else {
-      currentParent = currentParentResult.first();
+    // Set a Toolbar to replace the ActionBar.
+    Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+    setSupportActionBar(toolbar);
+
+    // Find our drawer view
+    dlDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+    NavigationView nvDrawer = (NavigationView) findViewById(R.id.nvView);
+    // Setup drawer view
+    setupDrawerContent(nvDrawer);
+
+    // Set the menu icon instead of the launcher icon.
+    final ActionBar actionBar = getSupportActionBar();
+    assert actionBar != null;
+    actionBar.setHomeAsUpIndicator(R.drawable.ic_action_menu);
+    actionBar.setDisplayHomeAsUpEnabled(true);
+
+
+    // Insert the fragment by replacing any existing fragment
+    FragmentManager fragmentManager = getSupportFragmentManager();
+    fragmentManager.beginTransaction().replace(R.id.flContent, new HomeFragment()).commit();
+  }
+
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
+    // The action bar home/up action should open or close the drawer.
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        dlDrawer.openDrawer(GravityCompat.START);
+        return true;
+    }return super.onOptionsItemSelected(item);
+  }
+
+  @Override protected void onPostCreate(Bundle savedInstanceState) {
+    super.onPostCreate(savedInstanceState);
+  }
+
+  private void setupDrawerContent(NavigationView navigationView) {
+    navigationView.setNavigationItemSelectedListener(
+        new NavigationView.OnNavigationItemSelectedListener() {
+          @Override
+          public boolean onNavigationItemSelected(MenuItem menuItem) {
+            selectDrawerItem(menuItem);
+            return true;
+          }
+        });
+  }
+
+  public void selectDrawerItem(MenuItem menuItem) {
+    // Create a new fragment and specify the planet to show based on
+    // position
+    Fragment fragment = null;
+
+    Class fragmentClass;
+    switch(menuItem.getItemId()) {
+      case R.id.nav_home_fragment:
+        fragmentClass = HomeFragment.class;
+        break;
+      case R.id.nav_switch_child_fragment:
+        fragmentClass = HomeFragment.class;
+        break;
+      case R.id.nav_about_us_fragment:
+        fragmentClass = HomeFragment.class;
+        break;
+      case R.id.nav_setting_fragment:
+        fragmentClass = HomeFragment.class;
+        break;
+      default:
+        fragmentClass = HomeFragment.class;
     }
 
-    String nickname = currentParent.getNickname();
-    String phoneString = "Tel: " + currentParent.getPhoneNumber();
+    try {
+      fragment = (Fragment) fragmentClass.newInstance();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
 
-    final MaterialAccount account =
-        new MaterialAccount(this.getResources(), nickname, phoneString, R.drawable.avatar,
-            R.drawable.bamboo);
-    this.addAccount(account);
+    // Insert the fragment by replacing any existing fragment
+    FragmentManager fragmentManager = getSupportFragmentManager();
+    fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
 
-    ImageLoader imageLoader = ImageLoader.getInstance();
-    imageLoader.loadImage(currentParent.getAvatarURL(), new SimpleImageLoadingListener() {
-      @Override public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-        account.setPhoto(loadedImage);
-      }
-    });
-
-    // set listener
-    this.setAccountListener(this);
-
-    // create sections
-    this.addSection(newSection("Home", new HomeFragment()));
-  }
-
-  @Override public void onAccountOpening(MaterialAccount account) {
-
-  }
-
-  @Override public void onChangeAccount(MaterialAccount newAccount) {
-
+    // Highlight the selected item, update the title, and close the drawer
+    menuItem.setChecked(true);
+    setTitle(menuItem.getTitle());
+    dlDrawer.closeDrawers();
   }
 }

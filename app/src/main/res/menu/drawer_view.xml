@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <group android:checkableBehavior="single">
+    <item
+        android:id="@+id/nav_home_fragment"
+        android:title="@string/drawer_home_title"
+        android:checked="true"
+        />
+    <item
+        android:id="@+id/nav_switch_child_fragment"
+        android:title="@string/drawer_switch_child_title" />
+    <item
+        android:id="@+id/nav_about_us_fragment"
+        android:title="@string/drawer_about_us_title" />
+    <item
+        android:id="@+id/nav_setting_fragment"
+        android:title="@string/drawer_setting_title" />
+  </group>
+</menu>

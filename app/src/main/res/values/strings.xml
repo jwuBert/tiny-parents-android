@@ -16,4 +16,8 @@
   <string name="is_already_login">isAlreadyLogin</string>
   <string name="API_token">APIToken</string>
   <string name="current_parent_ID">currentParentID</string>
+  <string name="drawer_home_title">首页</string>
+  <string name="drawer_switch_child_title">切换孩子</string>
+  <string name="drawer_about_us_title">关于微童年</string>
+  <string name="drawer_setting_title">设置</string>
 </resources>
