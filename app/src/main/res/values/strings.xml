@@ -20,4 +20,26 @@
   <string name="drawer_switch_child_title">切换孩子</string>
   <string name="drawer_about_us_title">关于微童年</string>
   <string name="drawer_setting_title">设置</string>
+  <string name="login_button_text_complete">成功</string>
+  <string name="login_button_text_error">失败</string>
+  <string name="username_edit_text_empty_input_error">请输入用户名</string>
+  <string name="phone_edit_text_empty_input_error">输入的不是手机号</string>
+  <string name="password_edit_text_empty_input_error">请输入密码</string>
+  <string name="login_land_network_error">网络异常</string>
+  <string name="login_button_text_idle">登录</string>
+  <string name="login_textview_forgetpassword_text">忘记密码?</string>
+  <string name="login_string_api_error">msg</string>
+  <string name="setting_button_text_set">设置</string>
+  <string name="setting_button_backhome_text">主页</string>
+  <string name="setting_button_function_text">功能介绍</string>
+  <string name="setting_button_feedback_text">意见反馈</string>
+  <string name="setting_button_checkversion_text">版本检测</string>
+  <string name="setting_button_cleanbuffer_text">清除缓存</string>
+  <string name="setting_button_quit_land_text">退出登陆</string>
+  <string name="title_activity_check_version">CheckVersionActivity</string>
+  <string name="checkversion_title_text">版本更新</string>
+  <string name="checkversion_backsetting_button_text">返回</string>
+  <string name="checkversion_feature_text">16452305465103 1546310486165 103581841 1365465013146 5168 16468 s</string>
+  <string name="check_version_nowversion_descript">当前版本</string>
+  <string name="check_version_endtext">checkversioncheckversioncheckversioncheckversioncheckversioncheckversion</string>
 </resources>
