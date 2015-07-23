@@ -14,7 +14,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.cloudiya.app.tiny_parents_android.API.TinyAPIClient;
 import com.cloudiya.app.tiny_parents_android.R;
@@ -46,7 +45,7 @@ public class LoginActivity extends Activity {
 		final MaterialEditText usernameEditText =
 				(MaterialEditText) findViewById(R.id.username_edit_text);
 		final Button loginButton = (Button) findViewById(R.id.login_button);
-		final TextView forgetPassWord = (TextView) findViewById(R.id.forget_password_button);
+		final Button forgetPassWord = (Button) findViewById(R.id.forget_password_button);
 
 		//listener the event of click loginButton
 		loginButton.setOnClickListener(new View.OnClickListener() {
@@ -140,21 +139,21 @@ public class LoginActivity extends Activity {
 		forgetPassWord.setOnClickListener(new View.OnClickListener() {
 
 			@Override public void onClick(View view) {
-				Log.d(TAG, "FoegetPassWord");
-				String phone = "1";
-				RequestParams params = new RequestParams();
-				params.put("phone", phone);
-				TinyAPIClient.gainUrl(params, new JsonHttpResponseHandler() {
-					@Override public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-						super.onSuccess(statusCode, headers, response);
-						Log.d(TAG, response.toString());
-
-						//show setting activity
-						Intent setIntent = new Intent(LoginActivity.this, SettingActivity.class);
-						startActivity(setIntent);
-						//finish
-					}
-				});
+				//Log.d(TAG, "FoegetPassWord");
+				//String phone = "1";
+				//RequestParams params = new RequestParams();
+				//params.put("phone", phone);
+				//TinyAPIClient.gainUrl(params, new JsonHttpResponseHandler() {
+				//	@Override public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+				//		super.onSuccess(statusCode, headers, response);
+				//		Log.d(TAG, response.toString());
+				//
+				//		//show ForgetPasswordActivity
+				//		Intent setIntent = new Intent(LoginActivity.this,ForgetPasswordActivity.class);
+				//		startActivity(setIntent);
+				//		finish
+				//	}
+				//});
 			}
 		});
 	}

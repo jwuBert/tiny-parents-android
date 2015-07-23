@@ -64,7 +64,7 @@
       app:cpb_textError="@string/login_button_text_error"
       app:cpb_textIdle="@string/login_button_text_idle"
       />
-    <com.dd.CircularProgressButton
+    <Button
         android:id="@+id/forget_password_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -75,10 +75,10 @@
         android:layout_marginTop="23dp"
         android:autoLink="all"
         android:autoText="false"
-        android:textColor="#87CEEB"
-        android:textColorLink="@color/cpb_red"
-        android:textIsSelectable="true"
+        android:textIsSelectable="false"
         android:singleLine="false"
+        android:background="#ffffff"
+        android:textColor="#000000"
         />
 
 
