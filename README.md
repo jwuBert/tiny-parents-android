@@ -16,7 +16,7 @@ Just use Square's coding style tool: https://github.com/square/java-code-styles
 And always use lint. Make warning gone.
 
 ### Git Commit Guidelines
-  ////////////////////////
+
 We have very precise rules over how our git commit messages can be formatted. This leads to more
 readable that are easy to follow when looking through the project history. But also, we use the
 git commit to generate the App change log.
