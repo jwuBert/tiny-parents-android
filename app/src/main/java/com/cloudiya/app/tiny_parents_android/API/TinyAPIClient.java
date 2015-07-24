@@ -49,4 +49,17 @@ public class TinyAPIClient {
   public static void userLogin(RequestParams params, AsyncHttpResponseHandler responseHandler) {
     get("/user/login/", params, responseHandler);
   }
+
+  public static void getSmsCode(RequestParams params, AsyncHttpResponseHandler responseHandler) {
+    get("/user/get_smscode/", params, responseHandler);
+  }
+
+  public static void ModifyPwd(RequestParams params, AsyncHttpResponseHandler responseHandler) {
+    get("user/modify_pwd_bySms/", params, responseHandler);
+  }
+
+  public static void feedback(RequestParams params, AsyncHttpResponseHandler responseHandler) {
+    get("app/feedback/", params, responseHandler);
+  }
+
 }
