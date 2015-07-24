@@ -4,22 +4,13 @@
  * Created by mm on 7/13/15.
  *
  * Purpose: Home screen
- *
- * Purpose: Home screen
- *
- * Purpose: Home screen
- *
- * Purpose: Home screen
- *
- * Purpose: Home screen
- */
-
-/**
- * Purpose: Home screen
  */
 
 package com.cloudiya.app.tiny_parents_android.activity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -29,12 +20,22 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import com.cloudiya.app.tiny_parents_android.R;
 import com.cloudiya.app.tiny_parents_android.fragment.HomeFragment;
+import com.cloudiya.app.tiny_parents_android.model.Parent;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
+import de.hdodenhof.circleimageview.CircleImageView;
+import io.realm.Realm;
+import io.realm.RealmResults;
 
 public class HomeActivity extends AppCompatActivity {
 
+  private static final String TAG = HomeActivity.class.getSimpleName();
   private DrawerLayout dlDrawer;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +60,39 @@ public class HomeActivity extends AppCompatActivity {
     actionBar.setHomeAsUpIndicator(R.drawable.ic_action_menu);
     actionBar.setDisplayHomeAsUpEnabled(true);
 
+    // Set drawer user data
+    SharedPreferences sharedPref =
+        getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+    String currentParentID = sharedPref.getString(getString(R.string.current_parent_ID), null);
+
+    Realm realm = Realm.getInstance(getApplicationContext());
+    RealmResults<Parent> currentParentResult =
+        realm.where(Parent.class).equalTo("userID", currentParentID).findAll();
+    Parent currentParent;
+    if (currentParentResult.size() > 1) {
+      Log.e(TAG, "found multiple login user records");
+      return;
+    } else if (currentParentResult.size() == 0) {
+      Log.e(TAG, "found zero login user records");
+      return;
+    } else {
+      currentParent = currentParentResult.first();
+    }
+
+    String nickname = currentParent.getNickname();
+    String phoneString = "Tel: " + currentParent.getPhoneNumber();
+
+    final CircleImageView avatarImageView = (CircleImageView) findViewById(R.id.avatarImageView);
+    TextView nicknameTextView = (TextView) findViewById(R.id.nicknameTextView);
+    TextView phoneNumberTextView = (TextView) findViewById(R.id.phoneNumberTextView);
+    ImageLoader imageLoader = ImageLoader.getInstance();
+    imageLoader.loadImage(currentParent.getAvatarURL(), new SimpleImageLoadingListener() {
+      @Override public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+        avatarImageView.setImageBitmap(loadedImage);
+      }
+    });
+    nicknameTextView.setText(nickname);
+    phoneNumberTextView.setText(phoneString);
 
     // Insert the fragment by replacing any existing fragment
     FragmentManager fragmentManager = getSupportFragmentManager();
