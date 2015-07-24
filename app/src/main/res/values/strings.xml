@@ -60,4 +60,5 @@
   <string name="feed_back_hint">意见反馈</string>
   <string name="text_view_hint">说点什么吧....</string>
   <string name="send_button_text">发送</string>
+  <string name="password_not_consist_message">两次输入的密码不一致</string>
 </resources>

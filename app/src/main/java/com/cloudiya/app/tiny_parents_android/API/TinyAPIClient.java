@@ -50,7 +50,7 @@ public class TinyAPIClient {
     get("/user/login/", params, responseHandler);
   }
 
-  public static void getSmsCode(RequestParams params, AsyncHttpResponseHandler responseHandler) {
+  public static void getSMSCode(RequestParams params, AsyncHttpResponseHandler responseHandler) {
     get("/user/get_smscode/", params, responseHandler);
   }
 
