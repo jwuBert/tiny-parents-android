@@ -44,4 +44,20 @@
   <string name="checkversion_feature_text">16452305465103 1546310486165 103581841 1365465013146 5168 16468 s</string>
   <string name="check_version_nowversion_descript">当前版本</string>
   <string name="check_version_endtext">checkversioncheckversioncheckversioncheckversioncheckversioncheckversion</string>
+  <string name="password_error_forget_pwd">两次密码不相同</string>
+  <string name="password_success_forget_pwd">密码修改成功</string>
+  <string name="error_Internet_forget_pwd">网络异常</string>
+  <string name="phone_number_hint">请输入手机号码</string>
+  <string name="smscode_edit_text">请输入手机验证码</string>
+  <string name="btn_button_edit_text">获取短信验证码</string>
+  <string name="password_edit_text">请输入密码</string>
+  <string name="password_edit_text2">请输入再次输入密码</string>
+  <string name="submit_button_text">确定</string>
+  <string name="content_feature_text">你想知道什么？你以为我会告诉你吗！我告诉你：我会！</string>
+  <string name="text_feature">武汉云雅科技 版权所有
+    Copyright 2011-2015 Wuhan
+    Cloudiya Tech. All Right Reserved</string>
+  <string name="feed_back_hint">意见反馈</string>
+  <string name="text_view_hint">说点什么吧....</string>
+  <string name="send_button_text">发送</string>
 </resources>
