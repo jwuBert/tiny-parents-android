@@ -6,9 +6,18 @@ package com.cloudiya.app.tiny_parents_android.activity;
  * Created by mm on 7/6/15.
  */
 
+import android.app.Activity;
+import android.os.Bundle;
+
 /**
  * Purpose:
  */
 
-public class ForgetPasswordActivity {
+public class ForgetPasswordActivity extends Activity{
+
+  private static final String TAG = LoginActivity.class.getSimpleName();
+
+  @Override protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+  }
 }
