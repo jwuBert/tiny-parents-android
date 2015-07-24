@@ -20,4 +20,6 @@
   <string name="drawer_switch_child_title">切换孩子</string>
   <string name="drawer_about_us_title">关于微童年</string>
   <string name="drawer_setting_title">设置</string>
+  <string name="nav_header_nickname_default">用户昵称</string>
+  <string name="nav_header_phone_number_default">电话号码</string>
 </resources>
