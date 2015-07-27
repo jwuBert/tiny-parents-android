@@ -40,6 +40,21 @@
         android:label="@string/app_name"
         >
     </activity>
+    <activity
+        android:name=".activity.AboutUsActivity"
+        android:label="@string/app_name"
+        >
+    </activity>
+    <activity
+        android:name=".activity.SettingActivity"
+        android:label="@string/app_name"
+        >
+    </activity>
+    <activity
+        android:name=".activity.SwitchChildActivity"
+        android:label="@string/app_name"
+        >
+    </activity>
   </application>
 
 </manifest>
