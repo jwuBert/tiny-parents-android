@@ -9,6 +9,7 @@
 package com.cloudiya.app.tiny_parents_android.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -105,7 +106,8 @@ public class HomeActivity extends AppCompatActivity {
       case android.R.id.home:
         dlDrawer.openDrawer(GravityCompat.START);
         return true;
-    }return super.onOptionsItemSelected(item);
+    }
+    return super.onOptionsItemSelected(item);
   }
 
   @Override protected void onPostCreate(Bundle savedInstanceState) {
@@ -115,8 +117,7 @@ public class HomeActivity extends AppCompatActivity {
   private void setupDrawerContent(NavigationView navigationView) {
     navigationView.setNavigationItemSelectedListener(
         new NavigationView.OnNavigationItemSelectedListener() {
-          @Override
-          public boolean onNavigationItemSelected(MenuItem menuItem) {
+          @Override public boolean onNavigationItemSelected(MenuItem menuItem) {
             selectDrawerItem(menuItem);
             return true;
           }
@@ -126,35 +127,32 @@ public class HomeActivity extends AppCompatActivity {
   public void selectDrawerItem(MenuItem menuItem) {
     // Create a new fragment and specify the planet to show based on
     // position
-    Fragment fragment = null;
+    Fragment fragment;
+    FragmentManager fragmentManager = getSupportFragmentManager();
 
-    Class fragmentClass;
-    switch(menuItem.getItemId()) {
+    switch (menuItem.getItemId()) {
       case R.id.nav_home_fragment:
-        fragmentClass = HomeFragment.class;
+        fragment = new HomeFragment();
+        // Insert the fragment by replacing any existing fragment
+        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
         break;
       case R.id.nav_switch_child_fragment:
-        fragmentClass = HomeFragment.class;
+        Intent switchChildIntent = new Intent(this, SwitchChildActivity.class);
+        startActivity(switchChildIntent);
         break;
       case R.id.nav_about_us_fragment:
-        fragmentClass = HomeFragment.class;
+        Intent aboutUsIntent = new Intent(this, AboutUsActivity.class);
+        startActivity(aboutUsIntent);
         break;
       case R.id.nav_setting_fragment:
-        fragmentClass = HomeFragment.class;
+        Intent settingIntent = new Intent(this, SettingActivity.class);
+        startActivity(settingIntent);
         break;
       default:
-        fragmentClass = HomeFragment.class;
+        fragment = new HomeFragment();
+        // Insert the fragment by replacing any existing fragment
+        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
     }
-
-    try {
-      fragment = (Fragment) fragmentClass.newInstance();
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-
-    // Insert the fragment by replacing any existing fragment
-    FragmentManager fragmentManager = getSupportFragmentManager();
-    fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
 
     // Highlight the selected item, update the title, and close the drawer
     menuItem.setChecked(true);
