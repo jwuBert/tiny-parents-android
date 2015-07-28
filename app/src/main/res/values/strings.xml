@@ -61,4 +61,21 @@
   <string name="text_view_hint">说点什么吧....</string>
   <string name="send_button_text">发送</string>
   <string name="password_not_consist_message">两次输入的密码不一致</string>
+  <string name="setting_button_title">设置</string>
+  <string name="setting_button_logout">退出</string>
+  <string name="aboutus_button_title_text">关于我们</string>
+  <string name="aboutus_text_company">武汉云雅科技有限公司</string>
+  <string name="aboutus_companyaddress_text">武汉市东湖高新区光谷创业街留学生创业园C栋 4146</string>
+  <string name="aboutus_service_text">服务热线：</string>
+  <string name="aboutus_service_tel2_number">02787204207</string>
+  <string name="aboutus_service_tel1_number">4008385286</string>
+  <string name="aboutus_business_text">商务合作：</string>
+  <string name="aboutus_business_address_text">sale@68baobao.cn</string>
+  <string name="aboutus_skill_text">技术支持：</string>
+  <string name="aboutus_telphonenumber1">tel:4008385286</string>
+  <string name="aboutus_telphonenumber2">tel:02787204207</string>
+  <string name="aboutus_sale_address">http://sale@68baobao.cn</string>
+  <string name="aboutus_skill_address_text">support@68baobao.cn</string>
+  <string name="aboutus_skill_address">http://skill@68baobao.cn</string>
 </resources>
+
