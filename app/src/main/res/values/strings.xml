@@ -74,8 +74,10 @@
   <string name="aboutus_skill_text">技术支持：</string>
   <string name="aboutus_telphonenumber1">tel:4008385286</string>
   <string name="aboutus_telphonenumber2">tel:02787204207</string>
-  <string name="aboutus_sale_address">http://sale@68baobao.cn</string>
+  <string name="aboutus_sale_address">mailto:http://sale@68baobao.cn</string>
   <string name="aboutus_skill_address_text">support@68baobao.cn</string>
-  <string name="aboutus_skill_address">http://skill@68baobao.cn</string>
+   <string name="aboutus_sendemail_to_skill">mailto:http://support@68baobao.cn</string>
+  <string name="aboutus_choose_email_to_sale">Choose Email send to sale@68baobao.cn</string>
+  <string name="aboutus_choose_email_to_support">Choose Email send to support@68baobao.cn</string>
 </resources>
 

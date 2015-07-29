@@ -50,15 +50,17 @@ import com.cloudiya.app.tiny_parents_android.R;
 		business.setOnClickListener(new View.OnClickListener() {
 			@Override public void onClick(View view) {
  				Uri uri=Uri.parse(getString(R.string.aboutus_sale_address));
-				Intent intent=new Intent(Intent.ACTION_VIEW,uri);
-				startActivity(intent);
+				Intent it= new Intent(Intent.ACTION_SENDTO, uri);
+				startActivity(it);
+				startActivity(Intent.createChooser(it, getString(R.string.aboutus_choose_email_to_sale)));
 			}
 		});
 		skill.setOnClickListener(new View.OnClickListener(){
 			@Override public void onClick(View view) {
-				Uri uri=Uri.parse(getString(R.string.aboutus_skill_address));
-				Intent intent=new Intent(Intent.ACTION_VIEW,uri);
+				Uri uri=Uri.parse(getString(R.string.aboutus_sendemail_to_skill));
+				Intent intent=new Intent(Intent.ACTION_SENDTO,uri);
 				startActivity(intent);
+				startActivity(Intent.createChooser(intent,getString(R.string.aboutus_choose_email_to_support)));
 			}
 		});
 	}
