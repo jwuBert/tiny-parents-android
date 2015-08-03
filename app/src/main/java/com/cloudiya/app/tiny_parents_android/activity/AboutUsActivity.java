@@ -55,6 +55,8 @@ import com.cloudiya.app.tiny_parents_android.R;
 				startActivity(Intent.createChooser(it, getString(R.string.aboutus_choose_email_to_sale)));
 			}
 		});
+
+
 		skill.setOnClickListener(new View.OnClickListener(){
 			@Override public void onClick(View view) {
 				Uri uri=Uri.parse(getString(R.string.aboutus_sendemail_to_skill));

@@ -79,5 +79,6 @@
    <string name="aboutus_sendemail_to_skill">mailto:http://support@68baobao.cn</string>
   <string name="aboutus_choose_email_to_sale">Choose Email send to sale@68baobao.cn</string>
   <string name="aboutus_choose_email_to_support">Choose Email send to support@68baobao.cn</string>
+  <string name="setting_string_api_error">msg</string>
 </resources>
 
